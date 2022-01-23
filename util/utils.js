@@ -1,4 +1,5 @@
 import semver from "semver";
+import chalk from "chalk";
 import validateProjectName from "validate-npm-package-name";
 
 // 检测版本号
