@@ -1,6 +1,6 @@
 {
   "name": "create-admin-ui",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -8,16 +8,17 @@
   },
   "files": [
     "index.js",
-    "createReactApp.js"
+    "template",
+    "util"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "create-admin-app": "./index.js"
+    "create-admin-ui": "./index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "jak-chan",
   "type": "module",
   "license": "ISC",
   "dependencies": {
