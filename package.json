@@ -12,7 +12,7 @@
     "util"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "bin": {
     "create-admin-ui": "./index.js"
@@ -30,5 +30,15 @@
     "prompts": "^2.4.2",
     "semver": "^7.3.5",
     "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.4.6",
+    "cross-env": "^7.0.3",
+    "jest": "^27.4.7"
+  },
+  "jest": {
+    "transform": {}
   }
 }
