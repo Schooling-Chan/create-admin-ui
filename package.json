@@ -14,7 +14,7 @@
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "init": "yarn install",
-    "start": "yarn init && nodemon ./index.js"
+    "start": "yarn run init && nodemon ./index.js"
   },
   "bin": {
     "create-admin-ui": "./index.js"
