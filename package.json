@@ -1,6 +1,6 @@
 {
   "name": "create-admin-ui",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -12,7 +12,9 @@
     "util"
   ],
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "init": "yarn install",
+    "start": "yarn init && nodemon ./index.js"
   },
   "bin": {
     "create-admin-ui": "./index.js"
@@ -29,6 +31,7 @@
     "execa": "^6.0.0",
     "prompts": "^2.4.2",
     "semver": "^7.3.5",
+    "update-notifier": "^5.1.0",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
@@ -36,7 +39,8 @@
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.4.6",
     "cross-env": "^7.0.3",
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15"
   },
   "jest": {
     "transform": {}

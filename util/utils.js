@@ -1,9 +1,25 @@
 import semver from "semver";
 import chalk from "chalk";
 import validateProjectName from "validate-npm-package-name";
+import updateNotifier from "update-notifier";
 
 // 检测版本号
-export const checkLatest = () => {};
+export const checkLatest = ({ pkgName, version }) => {
+  const notifier = updateNotifier({
+    pkg: {
+      name: pkgName,
+      version,
+    },
+  });
+
+  if (notifier.update) {
+    // notify通知
+    notifier.notify();
+    process.exit(1);
+  }
+
+  return notifier;
+};
 
 // 检测node版本号
 export const checkNodeVersion = (version) => {

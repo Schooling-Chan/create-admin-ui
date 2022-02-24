@@ -11,6 +11,7 @@ import {
   checkNodeVersion,
   checkProjectName,
   renderTemplate,
+  checkLatest,
 } from "./util/index.js";
 
 const targetType = ["react", "vue"];
@@ -30,10 +31,15 @@ const init = async () => {
   const program = new commander.Command(packageJson.name);
   const targetDir = process.cwd();
 
+  await checkLatest({
+    pkgName: packageJson.name,
+    version: packageJson.version,
+  });
+
   // 命令行设置
   program
     .version(packageJson.version, "-v, --version")
-    .arguments("<project-directory>")
+    // .arguments("<project-directory>")
     .usage(`${chalk.green("<project-directory>")} [options]`)
     .action((name) => {
       projectName = name;
