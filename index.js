@@ -24,7 +24,10 @@ const __dirname = dirname(__filename);
 const packageJson = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "package.json"), "utf8")
 );
-let projectName;
+
+let projectName = process.argv
+  .slice(1)
+  .filter((item) => !item.includes("create-admin-ui"));
 
 // 入口函数
 const init = async () => {
@@ -36,14 +39,22 @@ const init = async () => {
     version: packageJson.version,
   });
 
+  // 没有设置文件名称
+  if (!projectName?.length || projectName?.length > 1) {
+    console.error("Please specify the project directory:");
+    console.log(` ${packageJson.name} ${chalk.green("<project-directory>")}`);
+    console.log();
+    console.log(
+      `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
+    );
+    process.exit(1);
+  }
+  projectName = projectName[0];
+
   // 命令行设置
   program
     .version(packageJson.version, "-v, --version")
-    // .arguments("<project-directory>")
     .usage(`${chalk.green("<project-directory>")} [options]`)
-    .action((name) => {
-      projectName = name;
-    })
     .allowUnknownOption()
     .on("--help", () => {
       console.log(
@@ -54,17 +65,6 @@ const init = async () => {
     .parse(process.argv);
 
   checkNodeVersion(packageJson.engines.node);
-
-  // 没有设置文件名称
-  if (!projectName) {
-    console.error("Please specify the project directory:");
-    console.log(` ${packageJson.name} ${chalk.green("<project-directory>")}`);
-    console.log();
-    console.log(
-      `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
-    );
-    process.exit(1);
-  }
 
   // 记录用户选项
   let result = {};
