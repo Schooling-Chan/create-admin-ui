@@ -22,6 +22,16 @@
             <template #icon><SettingFilled /></template>
           </a-button>
         </a-col>
+        <a-col class="mr-3">
+          <a-button
+            type="primary"
+            shape="circle"
+            size="large"
+            @click="this.$router.push('/wihabing')"
+          >
+            <template #icon><UserOutlined /></template>
+          </a-button>
+        </a-col>
       </a-row>
     </a-layout-header>
     <a-layout-content style="margin: 0 16px">
@@ -34,6 +44,9 @@
 
 <script>
 import Home from "./pages/Home/index.vue";
+import {
+  UserOutlined,
+} from '@ant-design/icons-vue';
 
 export default {
   name: "Home",
