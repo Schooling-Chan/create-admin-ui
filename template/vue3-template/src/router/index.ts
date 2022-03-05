@@ -11,6 +11,11 @@ const routes = [
     name: "Setting",
     component: () => import("../pages/Setting/index.vue"),
   },
+  {
+    path: "/wihabing",
+    name: "Wihabing",
+    component: () => import("../pages/Wihabing/index.vue"),
+  },
 ];
 
 export default createRouter({
