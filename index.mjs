@@ -12,7 +12,7 @@ import {
   checkProjectName,
   renderTemplate,
   checkLatest,
-} from "./util/index.js";
+} from "./util/index.mjs";
 
 const targetType = ["react", "vue"];
 const templatesName = {

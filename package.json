@@ -14,14 +14,16 @@
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "init": "yarn install",
-    "start": "yarn run init && nodemon ./index.js"
+    "start": "yarn run init && nodemon ./index.js",
+    "prepare": "husky install"
   },
   "bin": {
     "create-admin-ui": "./index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "create-admin-ui"
+  ],
   "author": "jak-chan",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "boxen": "^6.2.1",
@@ -37,12 +39,36 @@
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "babel-jest": "^27.4.6",
     "cross-env": "^7.0.3",
+    "eslint": "^8.10.0",
+    "husky": "^7.0.4",
     "jest": "^27.4.7",
-    "nodemon": "^2.0.15"
+    "lint-staged": "^12.3.5",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "lint-staged": {
+    "*.{js,md,json}": [
+      "prettier --write"
+    ]
   },
   "jest": {
     "transform": {}
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Schooling-Chan/create-admin-ui.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
   }
 }
