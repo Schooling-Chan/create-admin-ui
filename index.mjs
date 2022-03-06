@@ -2,8 +2,7 @@
 import chalk from "chalk";
 import fs from "fs";
 import { spawn } from "child_process";
-import { fileURLToPath } from "url";
-import path, { dirname } from "path";
+import path from "path";
 import boxen from "boxen";
 import prompts from "prompts";
 import commander from "commander";
@@ -19,8 +18,7 @@ const templatesName = {
   react: "umi-react-template",
   vue: "vue3-template",
 };
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 const packageJson = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "package.json"), "utf8")
 );

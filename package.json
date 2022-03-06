@@ -7,18 +7,18 @@
     "node": ">=14"
   },
   "files": [
-    "index.js",
-    "template",
-    "util"
+    "outfile.cjs",
+    "template"
   ],
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "init": "yarn install",
-    "start": "yarn run init && nodemon ./index.js",
+    "build": "esbuild --bundle index.mjs --format=cjs --platform=node --outfile=outfile.cjs",
+    "start:init": "yarn run init",
     "prepare": "husky install"
   },
   "bin": {
-    "create-admin-ui": "./index.js"
+    "create-admin-ui": "outfile.cjs"
   },
   "keywords": [
     "create-admin-ui"
@@ -43,6 +43,7 @@
     "@commitlint/config-conventional": "^16.2.1",
     "babel-jest": "^27.4.6",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.14.25",
     "eslint": "^8.10.0",
     "husky": "^7.0.4",
     "jest": "^27.4.7",
