@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import chalk from "chalk";
 import fs from "fs";
-import { spawn } from "child_process";
+import { spawn } from "cross-spawn";
 import path from "path";
 import boxen from "boxen";
 import prompts from "prompts";
@@ -164,30 +164,27 @@ const init = async () => {
     });
   }
 
-  spawn("git", ["init"], { cwd: root, stdio: "inherit" }).on(
-    "close",
-    (code) => {
-      if (!needsDownload) {
-        const message =
-          "We suggest that you begin by typing:" +
-          "\n" +
-          chalk.cyan(`cd ${projectName}`) +
-          "\nInside that directory, run:" +
-          "\n" +
-          chalk.cyan("npm install && npm run dev") +
-          " Or " +
-          chalk.cyan("yarn install && yarn dev");
-        console.log(
-          boxen(message, {
-            padding: 1,
-            margin: 1,
-            align: "center",
-            borderColor: "yellow",
-            borderStyle: "round",
-          })
-        );
-      }
+  spawn("git", ["init"], { cwd: root, stdio: "inherit" }).on("close", () => {
+    if (!needsDownload) {
+      const message =
+        "We suggest that you begin by typing:" +
+        "\n" +
+        chalk.cyan(`cd ${projectName}`) +
+        "\nInside that directory, run:" +
+        "\n" +
+        chalk.cyan("npm install && npm run dev") +
+        " Or " +
+        chalk.cyan("yarn install && yarn dev");
+      console.log(
+        boxen(message, {
+          padding: 1,
+          margin: 1,
+          align: "center",
+          borderColor: "yellow",
+          borderStyle: "round",
+        })
+      );
     }
-  );
+  });
 };
 init();
