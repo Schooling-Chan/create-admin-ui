@@ -1,11 +1,11 @@
-# 简介
+# Introductoin
 
-这是一个可以创建 vue 和 react 后台管理项目的脚手架
+There is a simple CLI to create admin projects
 
-- vue: 基于 antd-vue + vite + vue3 创建的项目
-- react: 基于 umi + react 17 创建的项目
+- vue: basic antd-vue + vite + vue3 
+- react: basic umi + react 17 
 
-# 运行
+# Run
 
 ```sh
 npx create-admin-ui <app-name>
